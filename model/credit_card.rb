@@ -35,7 +35,6 @@ class CreditCard < ActiveRecord::Base
   def to_s
     self.to_json
   end
-end
 
 # return a new CreditCard object given a serialized (JSON) representation
 def self.from_s(card_s)
@@ -60,3 +59,4 @@ def hash_secure
   sha256.digest(self.to_s).unpack('h*')
 end
 
+end
