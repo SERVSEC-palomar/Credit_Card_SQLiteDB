@@ -1,22 +1,24 @@
  # Doc ruby URL http://ruby-doc.org/stdlib-2.0/libdoc/json/rdoc/JSON.html
 
-require_relative './luhn_validator.rb'
+require 'sinatra/activerecord'
+require_relative '../environments'
+require_relative '../lib/luhn_validator.rb'
 require 'json'
 require 'openssl'
 
-class CreditCard
+class CreditCard < ActiveRecord::Base
   include LuhnValidator # TODO: mixin the LuhnValidator using an 'include' statement
 
   # instance variables with automatic getter/setter methods
-  attr_accessor :number, :expiration_date, :owner, :credit_network
+  # attr_accessor :number, :expiration_date, :owner, :credit_network
 
-  def initialize(number, expiration_date, owner, credit_network)
-    # DONE - TODO: initialize the instance variables listed above (do not forget the '@')
-    @number = number
-    @expiration_date = expiration_date
-    @owner = owner
-    @credit_network = credit_network
-  end
+  # def initialize(number, expiration_date, owner, credit_network)
+  # # DONE - TODO: initialize the instance variables listed above (do not forget the '@')
+  #   @number = number
+  #   @expiration_date = expiration_date
+  #   @owner = owner
+  #   @credit_network = credit_network
+  # end
 
   # returns json string
   def to_json

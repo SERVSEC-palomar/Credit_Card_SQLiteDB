@@ -1,7 +1,7 @@
 require "sinatra"
 require "json"
 
-require_relative './lib/credit_card.rb'
+require_relative './model/credit_card.rb'
 
 # Credit Card Web Service
 class CreditCardAPI < Sinatra::Base
