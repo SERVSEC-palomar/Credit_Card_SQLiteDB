@@ -14,10 +14,11 @@
 ActiveRecord::Schema.define(version: 20150423144930) do
 
   create_table "credit_cards", force: :cascade do |t|
-    t.string "number"
+    t.string "nonce"
     t.string "owner"
     t.string "credit_network"
     t.string "expiration_date"
+    t.text   "encrypted_number"
   end
 
 end

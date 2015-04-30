@@ -10,10 +10,16 @@ gem 'rake'
 
 gem 'activerecord'
 gem 'sinatra-activerecord'
+gem 'config_env'
+gem 'rbnacl-libsodium'
 
 group :development do
   gem 'sqlite3'
   gem 'tux'
+end
+
+group :development, :test do
+  gem 'hirb'
 end
 
 # Add all the gems your code and tests use here!

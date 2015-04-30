@@ -1,17 +1,24 @@
 require "sinatra"
 require "json"
+require "config_env"
 
 require_relative './model/credit_card.rb'
 
 # Credit Card Web Service
 class CreditCardAPI < Sinatra::Base
 
+  configure :development, :test do
+    require 'hirb'
+    Hirb.enable
+    ConfigEnv.path_to_config("#{__dir__}/config/config_env.rb")
+  end
+
   get '/' do
     "The CreditCardAPI service is running"
   end
 
   get '/api/v1/credit_card/validate' do
-    card = CreditCard.new(params[:card_number],nil,nil,nil)
+    card = CreditCard.new(number: params[:card_number])
     {"Card" => params[:card_number], "validated" => card.validate_checksum}.to_json
   end
 
